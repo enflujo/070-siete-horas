@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="info"></div>
+    <div id="map"></div>
+    <div id="timeline">
+      <div id="times"></div>
+      <div id="points"></div>
+    </div>
+    <svg id="line" height="100%" width="100%">
+      <defs>
+        <filter id="f3" x="0" y="0" width="150%" height="150%">
+          <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+          <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+          <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+        </filter>
+      </defs>
+      <line
+        id="lineEle"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="0"
+        style="stroke: rgb(238, 237, 237); stroke-width: 2;"
+        filter="url(#f3)"
+      />
+    </svg>
+
+    <!-- <canvas id="stage"></canvas> -->
+  </body>
+</html>

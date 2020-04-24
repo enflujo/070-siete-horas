@@ -1,0 +1,141 @@
+@import url(~mapbox-gl/dist/mapbox-gl.css);
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #222;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  width: 100%;
+  min-height: 100vh;
+  z-index: 1;
+  position: absolute;
+}
+
+#stage {
+  width: 100%;
+  height: 100vh;
+}
+
+#info {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  margin: 0px auto;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #222;
+  background: #fff;
+  z-index: 99999;
+}
+
+#timeline {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 100px;
+  background-color: black;
+  z-index: 2;
+
+  #points,
+  #times {
+    margin-left: 1%;
+    position: absolute;
+    width: 98%;
+    height: 100%;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  #times {
+    .timeRef {
+      position: absolute;
+      font-size: 0.9em;
+      color: lightblue;
+      bottom: 10px;
+      opacity: 0.7;
+    }
+  }
+
+  .timePoint {
+    pointer-events: all;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+    bottom: 50px;
+    z-index: 5;
+
+    &.nextDay {
+      border: 1px solid yellow;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#lines {
+  width: 100vw;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#line {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+
+  #lineEle {
+  }
+}
+
+@keyframes move {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+// para borrar
+.markerTime {
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
