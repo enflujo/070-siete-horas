@@ -65,13 +65,6 @@ export default [
     coords: [-74.10686450370645, 4.635318806468334],
   },
   {
-    id: 3,
-    desc: 'Se ve a los internos mirando hacia el patio. Se escuchan los gritos por la libertad.',
-    date: '2020-03-21T22:41:31-05:00',
-    color: 'red',
-    coords: [-74.10893993704923, 4.635271312063438], // Falta definir puntos
-  },
-  {
     id: 4,
     desc: 'Un hombre dice que los del "patio 4o" están en la calle. Se refiere a "Las Pirañas"',
     date: '2020-03-21T22:41:20-05:00',
@@ -91,7 +84,7 @@ export default [
     desc:
       'Se ve un guardia del Inpec atrincherado contra un poste. En frente hay otros guardias adentro de una estructura abierta. A lo lejos se ven personas corriendo sin claridad de quiénes son. Las personas grabando el video describen que "no han podido coger el fusil. Por eso es que están peleando allá. Ya lo tienen, ya lo tienen".',
     date: '2020-03-21T23:22:02-05:00',
-    coords: [-74.10771812908041, 4.63414767806951], // no sabe bien donde es
+    coords: [-74.10903961125632, 4.635035482310897], // no sabe bien donde es
     color: 'green',
   },
   {
