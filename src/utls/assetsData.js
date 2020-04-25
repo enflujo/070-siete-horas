@@ -1,15 +1,27 @@
 export default [
   {
-    id: 26,
-    desc: 'Interno herido. En la grabación se ve otro herido sobre uno de los tejados. Narración irrelevante.',
-    date: '2020-03-21T23:16:42-05:00',
-    coords: [-74.1069, 4.63536],
+    id: 41,
+    desc: 'Filmado desde muy lejos, se escuchan tiros.',
+    date: '2020-03-21T21:30:11-05:00',
+    coords: [-74.10219, 4.640248],
+    newBounds: [
+      [-74.10932854696688, 4.641098048633365],
+      [-74.10570390075935, 4.633524571175038],
+    ],
   },
   {
-    id: 31,
-    desc: 'Escritorio quemándose. Salen varias PPL gritando Libertad! Uno con tapabocas.',
-    date: '2020-03-22T02:12:39-05:00',
-    coords: [-74.10710101710333, 4.635513988697596],
+    id: 39,
+    desc:
+      'Video filma el patio 4. Quien filma explica que los internos comenzaron un motín y que las rejas ya no sirven, que se han salido de las celdas, se ve a las personas del último piso de la estructura de al frente correr. Aun no se escuchan disparos.',
+    date: '2020-03-21T21:39:49-05:00',
+    coords: [-74.10792822057357, 4.6346124541653495], // no entiendo bien el mapa para este punto de vista
+    color: 'darkorange',
+  },
+  {
+    id: 24,
+    desc: 'Internos corren por la cancha y suben a los tejados.',
+    date: '2020-03-21T21:53:50-05:00',
+    coords: [-74.10734630073262, 4.635445458199129],
   },
   {
     id: 10,
@@ -32,13 +44,6 @@ export default [
     coords: [-74.10774639092057, 4.634426308034648],
   },
   {
-    id: 8,
-    desc: 'Filmado desde muy lejos, se ve humo saliendo de la estructura y se escuchan tiros y el helicóptero.',
-    date: '2020-03-21T22:32:25-05:00',
-    color: 'red',
-    coords: [-74.11111226579965, 4.635624503985554], // FALTA DEFINIR EL PUNTO EN EL MAPA
-  },
-  {
     id: 12,
     desc:
       'Se ven internos en el patio y un helicóptero sobrevolando. Se escuchan gritos y silbidos, hay una hoguera pero no hay "motín".',
@@ -48,14 +53,8 @@ export default [
   {
     id: 25,
     desc: 'Se registran dos incendios. Uno sobre el tejado.',
-    date: '2020-03-21T22:24:02-05:00',
+    date: '2020-03-21T22:31:19-05:00',
     coords: [-74.10761102437306, 4.634611667219673],
-  },
-  {
-    id: 24,
-    desc: 'Internos corren por la cancha y suben a los tejados.',
-    date: '2020-03-21T21:53:50-05:00',
-    coords: [-74.10734630073262, 4.635445458199129],
   },
   {
     id: 7,
@@ -65,6 +64,14 @@ export default [
     coords: [-74.10686450370645, 4.635318806468334],
   },
   {
+    id: 5,
+    desc:
+      'Filmado desde una celda que da a la cancha de Basketball. Se ven unas 25 PPL caminando en un patio con pasto (¿Lo que X llama Aislamiento entre patio y muro? Se escuchan unos 20 disparos.',
+    date: '2020-03-21T22:41:00-05:00',
+    coords: [-74.10701355395344, 4.635158948744859],
+    pushY: 10,
+  },
+  {
     id: 4,
     desc: 'Un hombre dice que los del "patio 4o" están en la calle. Se refiere a "Las Pirañas"',
     date: '2020-03-21T22:41:20-05:00',
@@ -72,12 +79,65 @@ export default [
     pushY: 5,
   },
   {
-    id: 5,
+    id: 43,
+    desc: 'Se ve un interno tirado en el piso. Los demás gritan que lo mataron.',
+    date: '2020-03-21T22:44:22-05:00',
+    coords: [-74.10796152776334, 4.634346867861723],
+  },
+  {
+    id: 44,
+    desc: 'Se ve un interno tirado en el piso y a otro intentando ver si todavía respira.',
+    date: '2020-03-21T22:50:00-05:00',
+    coords: [-74.10808450814801, 4.634479661026191],
+  },
+  {
+    id: 46,
+    desc: 'Se ve un interno con una herida en el hombro.',
+    date: '2020-03-21T22:53:00-05:00',
+    color: 'red',
+    coords: [-74.1078154885534, 4.635118089351266], // no se sabe
+  },
+  {
+    id: 32,
+    desc: 'PPL suben a un muerto por unas escaleras.',
+    date: '2020-03-21T22:57:11-05:00',
+    coords: [-74.10700586767803, 4.635444964430405],
+  },
+  {
+    id: 45,
+    desc: 'Se ve un interno con una herida en la cabeza mientras los demás intentan asistirlo.',
+    date: '2020-03-21T23:00:22-05:00',
+    coords: [-74.10803839050357, 4.634607346737312],
+  },
+  {
+    id: 38,
     desc:
-      'Filmado desde una celda que da a la cancha de Basketball. Se ven unas 25 PPL caminando en un patio con pasto (¿Lo que X llama Aislamiento entre patio y muro? Se escuchan unos 20 disparos.',
-    date: '2020-03-21T22:41:00-05:00',
-    coords: [-74.10821459427387, 4.634674993151293],
-    pushY: 10,
+      'Filmado desde un segundo piso fuera de la cárcel se ve a la policía corriendo. Se escuchan tiros. Las personas que filman describen que los policías llevan a otro que está herido, hasta una van de la policía.',
+    date: '2020-03-21T23:11:24-05:00',
+    coords: [-74.10667368974669, 4.633532426073614],
+    newBounds: [
+      [-74.10932754696688, 4.637018048633365],
+      [-74.10570390075935, 4.632524571175038],
+    ],
+  },
+  {
+    id: 36,
+    desc: 'Incendio de lo que parece ser una torre de control',
+    date: '2020-03-21T23:12:53-05:00',
+    coords: [-74.10818442971129, 4.634821858679274], // Donde esta la garita 9?
+    color: 'darkorange',
+  },
+  {
+    id: 33,
+    desc: 'Se ven personas corriendo desde un portón, al parecer escapando de disparos.',
+    date: '2020-03-21T23:13:13-05:00',
+    coords: [-74.1067445343582, 4.635419427320144],
+  },
+  {
+    id: 26,
+    desc: 'Interno herido. En la grabación se ve otro herido sobre uno de los tejados. Narración irrelevante.',
+    date: '2020-03-21T23:16:42-05:00',
+    coords: [-74.1069, 4.63536],
   },
   {
     id: 17,
@@ -93,13 +153,6 @@ export default [
       'Desde adentro un preso muestra las camas improvisadas que hay en un patio donde están organizados los heridos. La imagen no es clara, el espacio parece estar lleno de humo. El hombre relata: "estos son los heridos que hay en la cárcel la modelo. Necesitamos que nos colaboren, que nos ayuden con médicos porque realmente la situación está muy dura. Le pedimos la colaboración a los derechos humanos. Esto es consecuencia del gobierno por quitarnos los términos, no nos tienen en cuenta para nada. Aquí hay gente contaminada con el virus. La policía, el Inpec está matando a los internos a diestra y siniestra".',
     date: '2020-03-21T23:27:19-05:00',
     coords: [-74.10704173695757, 4.635475608960391],
-  },
-  {
-    id: 27,
-    desc: 'Min 2:05  Heridos tendidos en un pasillo sobre camas improvisadas. Presuntas heridas de bala por fusil',
-    date: '2020-03-22T02:02:44-05:00',
-    coords: [-74.10717496570891, 4.635296849179028], // video tiene varias partes
-    color: 'darkorange',
   },
   {
     id: 21,
@@ -118,100 +171,21 @@ export default [
     color: 'red',
   },
   {
-    id: 23,
-    desc: 'Hay internos alrededor de otro que está muerto. Un interno dice "uno de muchos".',
-    date: '2020-03-22T19:15:57-05:00',
-    coords: [-74.10737480883648, 4.634765676987044], // es lo que en el mapa llaman pasillo central?
-  },
-  // link roto
-  // {
-  //   id: 20
-  // },
-  // compilación
-  // {
-  //   id: 30
-  // },
-  // compilación
-  // {
-  //   id: "31A"
-  // },
-  {
-    id: 39,
-    desc:
-      'Video filma el patio 4. Quien filma explica que los internos comenzaron un motín y que las rejas ya no sirven, que se han salido de las celdas, se ve a las personas del último piso de la estructura de al frente correr. Aun no se escuchan disparos.',
-    date: '2020-03-21T21:39:49-05:00',
-    coords: [-74.10792822057357, 4.6346124541653495], // no entiendo bien el mapa para este punto de vista
-    color: 'darkorange',
-  },
-  {
-    id: 36,
-    desc: 'Incendio de lo que parece ser una torre de control',
-    date: '2020-03-21T23:12:53-05:00',
-    coords: [-74.10818442971129, 4.634821858679274], // Donde esta la garita 9?
-    color: 'darkorange',
-  },
-  {
-    id: 32,
-    desc: 'PPL suben a un muerto por unas escaleras.',
-    date: '2020-03-21T22:57:11-05:00',
-    coords: [-74.10700586767803, 4.635444964430405],
-  },
-  {
-    id: 38,
-    desc:
-      'Filmado desde un segundo piso fuera de la cárcel se ve a la policía corriendo. Se escuchan tiros. Las personas que filman describen que los policías llevan a otro que está herido, hasta una van de la policía.',
-    date: '2020-03-21T22:57:11-05:00',
-    coords: [-74.10667368974669, 4.633532426073614],
-    newBounds: [
-      [-74.10932754696688, 4.637018048633365],
-      [-74.10570390075935, 4.632524571175038],
-    ],
-  },
-  {
-    id: 33,
-    desc: 'Se ven personas corriendo desde un portón, al parecer escapando de disparos.',
-    date: '2020-03-21T23:13:13-05:00',
-    coords: [-74.1067445343582, 4.635419427320144],
-  },
-  {
-    id: 41,
-    desc: 'Filmado desde muy lejos, se escuchan tiros.',
-    date: '2020-03-21T21:30:11-05:00',
-    coords: [-74.10219, 4.640248],
-    newBounds: [
-      [-74.10932854696688, 4.641098048633365],
-      [-74.10570390075935, 4.633524571175038],
-    ],
-  },
-  {
-    id: 46,
-    desc: 'Se ve un interno con una herida en el hombro.',
-    date: '2020-03-21T23:00:00-05:00',
-    color: 'red',
-    coords: [-74.1078154885534, 4.635118089351266], // no se sabe
-  },
-  {
-    id: 44,
-    desc: 'Se ve un interno tirado en el piso y a otro intentando ver si todavía respira.',
-    date: '2020-03-21T22:50:00-05:00',
-    coords: [-74.10797946240137, 4.634561379883891],
-  },
-  {
-    id: 43,
-    desc: 'Se ve un interno tirado en el piso. Los demás gritan que lo mataron.',
-    date: '2020-03-21T22:44:22-05:00',
-    coords: [-74.10797946240137, 4.634561379883891],
-  },
-  {
-    id: 45,
-    desc: 'Se ve un interno con una herida en la cabeza mientras los demás intentan asistirlo.',
-    date: '2020-03-21T23:00:22-05:00',
-    coords: [-74.10803839050357, 4.634607346737312],
-  },
-  {
     id: 42,
     desc: 'Guardia camina por el Rancho contando los muertos. Se ve un bus del inpec.',
     date: '2020-03-22T02:00:00-05:00',
     coords: [-74.10634228601282, 4.635409212475736],
+  },
+  {
+    id: 31,
+    desc: 'Escritorio quemándose. Salen varias PPL gritando Libertad! Uno con tapabocas.',
+    date: '2020-03-22T02:12:39-05:00',
+    coords: [-74.10710101710333, 4.635513988697596],
+  },
+  {
+    id: 23,
+    desc: 'Hay internos alrededor de otro que está muerto. Un interno dice "uno de muchos".',
+    date: '2020-03-22T19:15:57-05:00',
+    coords: [-74.10737480883648, 4.634765676987044], // es lo que en el mapa llaman pasillo central?
   },
 ];

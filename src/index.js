@@ -18,12 +18,14 @@ const timeframe = {
 timeframe.length = timeframe.end - timeframe.start;
 const tStep = timelineWPercent / timeframe.length;
 
-let timelinePointsD = {};
+let timelinePointsD = [];
 
+data.sort((a, b) => a.date - b.date);
+console.log(data);
 data.forEach((d) => {
   const left = (new Date(d.date) - timeframe.start) * tStep;
 
-  // if (timelinePointsD.hasOwnProperty())
+  // console.log(timelinePointsD);
 });
 
 // esto tiene que ser distinto para que se vea bien fuera de Colombia
