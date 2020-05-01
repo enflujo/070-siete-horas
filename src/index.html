@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
-    <div id="info"></div>
     <div id="map"></div>
     <div id="timeline">
       <div id="times"></div>
@@ -21,17 +21,9 @@
           <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
         </filter>
       </defs>
-      <line
-        id="lineEle"
-        x1="0"
-        y1="0"
-        x2="0"
-        y2="0"
-        style="stroke: rgb(238, 237, 237); stroke-width: 2;"
-        filter="url(#f3)"
-      />
+      <line id="lineEle" filter="url(#f3)" />
     </svg>
-
+    <div id="clock"></div>
     <!-- <canvas id="stage"></canvas> -->
   </body>
 </html>
