@@ -63,14 +63,14 @@ export default [
     date: '2020-03-21T22:37:25-05:00',
     coords: [-74.10686450370645, 4.635318806468334],
   },
-  {
-    id: 5,
-    desc:
-      'Filmado desde una celda que da a la cancha de Basketball. Se ven unas 25 PPL caminando en un patio con pasto (¿Lo que X llama Aislamiento entre patio y muro? Se escuchan unos 20 disparos.',
-    date: '2020-03-21T22:41:00-05:00',
-    coords: [-74.10701355395344, 4.635158948744859],
-    pushY: 10,
-  },
+  // {
+  //   id: 5,
+  //   desc:
+  //     'Filmado desde una celda que da a la cancha de Basketball. Se ven unas 25 PPL caminando en un patio con pasto (¿Lo que X llama Aislamiento entre patio y muro? Se escuchan unos 20 disparos.',
+  //   date: '2020-03-21T22:41:00-05:00',
+  //   coords: [-74.10701355395344, 4.635158948744859],
+  //   pushY: 10,
+  // },
   {
     id: 4,
     desc: 'Un hombre dice que los del "patio 4o" están en la calle. Se refiere a "Las Pirañas"',
