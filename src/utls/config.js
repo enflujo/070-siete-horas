@@ -14,3 +14,5 @@ const timeframe = {
 };
 timeframe.length = timeframe.end - timeframe.start;
 export { timeframe };
+
+export const tStep = timelineWPercent / timeframe.length;
