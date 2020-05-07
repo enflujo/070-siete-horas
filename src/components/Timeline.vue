@@ -13,8 +13,8 @@
         @mouseleave="onPointerLeave"
         @click="onPointClick"
       >
-        <span class="timePointNum">{{ i + 1 }}</span>
-        <span class="timePointTime">{{
+        <span class="timePointNum" :data-index="i">{{ i + 1 }}</span>
+        <span class="timePointTime" :data-index="i">{{
           new Date(point.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }}</span>
       </span>
@@ -68,6 +68,7 @@ export default {
     },
 
     onPointClick(e) {
+      console.log(e.target);
       this.setEventData(e.target.dataset.index);
     }
   }
