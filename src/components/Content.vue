@@ -18,16 +18,7 @@
     </div>
 
     <div id="prose">
-      <div class="introText" v-if="!eventData">
-        <h2>Título</h2>
-        <p>
-          El pasado 21 de marzo, cientos de internos de la cárcel La Modelo de Bogotá se amotinaron y desencadenaron una
-          reacción brutal de la guardia, el ejército y la policía. 24 reclusos murieron y casi un centenar resultaron
-          heridos de gravedad, según el conteo oficial. Los internos hablan de más. Usando imágenes de fuentes abiertas,
-          análisis visual y los testimonios de presos y guardias reconstruimos lo que ocurrió esa trágica noche.
-        </p>
-        <p class="highlight center">(Atención: material sensible)</p>
-      </div>
+      <div class="introText" v-if="!eventData"><Intro /></div>
       <div v-else>
         <p v-for="(line, i) in eventData.prose" :key="i">{{ line }}</p>
       </div>
@@ -36,8 +27,11 @@
 </template>
 
 <script>
+import Intro from './Intro.vue';
+
 export default {
   name: 'Content',
+  components: { Intro },
   props: {
     eventData: Object,
     eventI: Number,
@@ -66,8 +60,8 @@ export default {
 <style scoped lang="scss">
 @import '../scss/utils/_variables.scss';
 #content {
-  position: absolute;
-  width: 40%;
+  // position: absolute;
+  width: $contentWidth;
   height: calc(100vh - #{$timelineHeight});
   z-index: 99;
   color: whitesmoke;
