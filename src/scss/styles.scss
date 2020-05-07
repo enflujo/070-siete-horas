@@ -1,39 +1,6 @@
 // @import url(~mapbox-gl/dist/mapbox-gl.css);
 $timelineHeight: 100px;
 
-html {
-  box-sizing: border-box;
-  height: 100%;
-  background-color: #222;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-}
-
-.highlight {
-  color: rgb(211, 201, 68);
-}
-
-.center {
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
 // #content {
 //   position: absolute;
 //   width: 40%;
@@ -62,15 +29,15 @@ body {
 //   }
 // }
 
-#map,
-#stage,
-#mask {
-  width: 60%;
-  height: calc(100vh - #{$timelineHeight - 50px});
-  z-index: 1;
-  position: absolute;
-  right: 0;
-}
+// #map,
+// #stage,
+// #mask {
+//   width: 60%;
+//   height: calc(100vh - #{$timelineHeight - 50px});
+//   z-index: 1;
+//   position: absolute;
+//   right: 0;
+// }
 
 #stage {
   pointer-events: none;
