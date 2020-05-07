@@ -1,4 +1,4 @@
-@import url(~mapbox-gl/dist/mapbox-gl.css);
+// @import url(~mapbox-gl/dist/mapbox-gl.css);
 $timelineHeight: 100px;
 
 html {
@@ -20,7 +20,6 @@ body {
 }
 
 body {
-  font-family: 'Share Tech Mono', monospace;
 }
 
 .highlight {
@@ -35,33 +34,33 @@ body {
   display: none;
 }
 
-#content {
-  position: absolute;
-  width: 40%;
-  height: calc(100vh - #{$timelineHeight});
-  z-index: 99;
-  color: whitesmoke;
-  overflow: auto;
+// #content {
+//   position: absolute;
+//   width: 40%;
+//   height: calc(100vh - #{$timelineHeight});
+//   z-index: 99;
+//   color: whitesmoke;
+//   overflow: auto;
 
-  #intro {
-    padding: 2em;
-  }
+//   #intro {
+//     padding: 2em;
+//   }
 
-  video {
-    cursor: pointer;
-    width: 100%;
-    max-height: 50vh;
-    display: none;
+//   video {
+//     cursor: pointer;
+//     width: 100%;
+//     max-height: 50vh;
+//     // display: none;
 
-    &:focus {
-      outline: 0;
-    }
+//     &:focus {
+//       outline: 0;
+//     }
 
-    &.visible {
-      display: block;
-    }
-  }
-}
+//     // &.visible {
+//     //   display: block;
+//     // }
+//   }
+// }
 
 #map,
 #stage,
@@ -76,7 +75,6 @@ body {
 #stage {
   pointer-events: none;
 }
-
 
 #info {
   display: block;
@@ -96,117 +94,92 @@ body {
   z-index: 99999;
 }
 
-#timeline {
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  height: $timelineHeight;
-  background-color: black;
-  z-index: 2;
+// #timeline {
+//   position: absolute;
+//   bottom: 0;
+//   width: 100vw;
+//   height: $timelineHeight;
+//   background-color: black;
+//   z-index: 2;
 
-  #playPause {
-    color: white;
-    font-size: 3em;
+//   #playPause {
+//     color: white;
+//     font-size: 3em;
 
-    &.playing {
-      &::before {
-        background-image: url(/imgs/pause.svg);
-        width: 35px;
-        height: 35px;
-      }
-    }
+//     &.playing {
+//       &::before {
+//         background-image: url(/imgs/pause.svg);
+//         width: 35px;
+//         height: 35px;
+//       }
+//     }
 
-    &::before {
-      content: '';
-      display: inline-block;
-      background-image: url(/imgs/play.svg);
-      background-repeat: no-repeat;
-      width: 35px;
-      height: 35px;
-    }
+//     &::before {
+//       content: '';
+//       display: inline-block;
+//       background-image: url(/imgs/play.svg);
+//       background-repeat: no-repeat;
+//       width: 35px;
+//       height: 35px;
+//     }
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
+//     &:hover {
+//       cursor: pointer;
+//     }
+//   }
 
-  #points,
-  #times {
-    margin-left: 1%;
-    position: absolute;
-    width: 98%;
-    height: 100%;
-    bottom: 0;
-    pointer-events: none;
-  }
+//   #points,
+//   #times {
+//     margin-left: 1%;
+//     position: absolute;
+//     width: 98%;
+//     height: 100%;
+//     bottom: 0;
+//     pointer-events: none;
+//   }
 
-  #times {
-    .timeRef {
-      position: absolute;
-      font-size: 0.7em;
-      color: lightblue;
-      bottom: 10px;
-      opacity: 0.7;
-    }
-  }
+//   #times {
+//     .timeRef {
+//       position: absolute;
+//       font-size: 0.7em;
+//       color: lightblue;
+//       bottom: 10px;
+//       opacity: 0.7;
+//     }
+//   }
 
-  .timePoint {
-    pointer-events: all;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 1px solid white;
-    position: absolute;
-    bottom: 50px;
-    z-index: 5;
+//   .timePoint {
+//     pointer-events: all;
+//     width: 10px;
+//     height: 10px;
+//     border-radius: 50%;
+//     border: 1px solid white;
+//     position: absolute;
+//     bottom: 50px;
+//     z-index: 5;
 
-    &.nextDay {
-      border: 1px solid yellow;
-    }
+//     &.nextDay {
+//       border: 1px solid yellow;
+//     }
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
+//     &:hover {
+//       cursor: pointer;
+//     }
+//   }
+// }
 
-#lines {
-  width: 100vw;
-  height: 100%;
-  pointer-events: none;
-  z-index: 99;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+// #line {
+//   position: absolute;
+//   z-index: 8;
+//   pointer-events: none;
+//   top: 0;
+//   left: 0;
 
-.mapboxgl-popup {
-  max-width: 200px;
-}
-
-.mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-}
-
-#line {
-  position: absolute;
-  z-index: 8;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-
-  #lineEle {
-    stroke: rgb(238, 237, 237);
-    stroke-width: 2;
-  }
-}
-
-@keyframes move {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
+//   #lineEle {
+//     stroke: rgb(238, 237, 237);
+//     stroke-width: 2;
+//   }
+// }
 
 // para borrar
 .markerTime {

@@ -1,64 +1,67 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './src/index.js'
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file),
         use: {
-          loader: 'babel-loader',
-        },
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
         test: /\.html$/,
         use: [
           {
             loader: 'html-loader',
-            options: { minimize: true },
-          },
-        ],
+            options: { minimize: true }
+          }
+        ]
       },
       {
         test: /\.(scss|css)$/,
         use: [
+          'vue-style-loader',
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-          },
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               autoprefixer: {
-                browsers: ['last 2 versions'],
+                browsers: ['last 2 versions']
               },
-              plugins: () => [autoprefixer],
-            },
+              plugins: () => [autoprefixer]
+            }
           },
-          {
-            loader: 'sass-loader',
-          },
-        ],
-      },
-    ],
+          'sass-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html',
+      filename: './index.html'
     }),
     new MiniCssExtractPlugin(),
-    new BundleAnalyzerPlugin(),
-  ],
+    new VueLoaderPlugin()
+    // new BundleAnalyzerPlugin()
+  ]
 };
