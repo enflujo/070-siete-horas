@@ -20,7 +20,6 @@ export default {
 
   updated() {
     const points = this.points;
-
     if (points.x1 === 0 && points.x2 === 0) {
       this.$refs.line.style.animation = 'none';
       this.$refs.line.style.strokeDasharray = 0;
@@ -35,7 +34,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 #line {
   position: absolute;
   z-index: 8;
