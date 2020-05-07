@@ -1,5 +1,6 @@
 <template>
-  <main>
+  <main id="main">
+    <Menu />
     <Content
       :eventData="eventData"
       :eventI="eventI"
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import Menu from './components/Menu.vue';
 import Content from './components/Content.vue';
 import Map from './components/Map.vue';
 import Timeline from './components/Timeline.vue';
@@ -28,7 +30,7 @@ import assetsData from './utls/assetsData';
 
 export default {
   name: 'Main',
-  components: { Content, Map, Timeline, Pointer },
+  components: { Menu, Content, Map, Timeline, Pointer },
   data() {
     return {
       eventData: null,
@@ -44,6 +46,7 @@ export default {
     };
   },
   mounted() {},
+  updated() {},
 
   methods: {
     setEventData(i) {
@@ -63,22 +66,54 @@ export default {
 </script>
 
 <style lang="scss">
-main {
+html {
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #222;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.highlight {
+  color: rgb(211, 201, 68);
+}
+
+.center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+#main {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   letter-spacing: 2px;
+  display: flex;
+
+  #content {
+    flex-grow: 1;
+  }
+
+  #map {
+    flex-grow: 1;
+  }
 }
 
 h2 {
   font-weight: 300;
   font-size: 2em;
   letter-spacing: 2px;
-}
-#app {
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #ced9e4;
 }
 </style>
