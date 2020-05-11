@@ -1,40 +1,55 @@
 <template>
   <main id="main">
-    <Menu />
     <Content
-      :eventData="eventData"
-      :eventI="eventI"
-      :setEventData="setEventData"
+      :contentData="contentData"
+      @setEventData="setEventData"
       :globalPlayer="globalPlayer"
+      @zoomToPlace="zoomToPlace"
+      @resetZoom="resetZoom"
     ></Content>
-    <Map></Map>
+    <Stage
+      @bindMap="bindMap"
+      @setEventData="setEventData"
+      @setLinePoints="setLinePoints"
+      :assetsData="assetsData"
+      :eventData="eventData"
+      :zoom="zoom"
+    ></Stage>
     <Timeline
-      :setEventData="setEventData"
-      :setLinePoints="setLinePoints"
+      :ready="ready"
+      @setEventData="setEventData"
+      @setLinePoints="setLinePoints"
+      :getScreenCoordinates="getScreenCoordinates"
       :assetsData="assetsData"
       :eventI="eventI"
+      :eventData="eventData"
       :globalPlayer="globalPlayer"
       :setGlobalPlayer="setGlobalPlayer"
+      :offX="offX"
+      :zoom="zoom"
     ></Timeline>
-    <Pointer :points="line"></Pointer>
+    <Pointer v-if="map" :points="line" :map="map" :eventData="eventData" :offX="offX"></Pointer>
   </main>
 </template>
 
 <script>
-import Menu from './components/Menu.vue';
 import Content from './components/Content.vue';
-import Map from './components/Map.vue';
+import Stage from './components/Stage.vue';
 import Timeline from './components/Timeline.vue';
 import Pointer from './components/Pointer.vue';
-import assetsData from './utls/assetsData';
+import assetsData from './utils/assetsData';
+import { Findcoords } from './utils/helpers';
 
 export default {
   name: 'Main',
-  components: { Menu, Content, Map, Timeline, Pointer },
+  components: { Content, Stage, Timeline, Pointer },
   data() {
     return {
+      ready: false,
       eventData: null,
+      contentData: null,
       eventI: null,
+      zoom: false,
       assetsData: assetsData,
       line: {
         x1: 0,
@@ -42,16 +57,39 @@ export default {
         x2: 0,
         y2: 0
       },
-      globalPlayer: false
+      globalPlayer: false,
+      map: null,
+      offX: 0
     };
   },
-  mounted() {},
+
+  mounted() {
+    window.addEventListener('resize', this.onResize);
+    this.offX = +document.getElementById('stage').offsetLeft;
+  },
+
   updated() {},
 
   methods: {
-    setEventData(i) {
+    onResize(e) {
+      this.offX = +document.getElementById('stage').offsetLeft;
+    },
+
+    setEventData(i, setContent) {
       this.eventData = assetsData[i];
       this.eventI = +i;
+
+      if (setContent) {
+        this.contentData = assetsData[i];
+      }
+    },
+
+    zoomToPlace() {
+      this.zoom = true;
+    },
+
+    resetZoom() {
+      this.zoom = false;
     },
 
     setLinePoints(points) {
@@ -60,6 +98,18 @@ export default {
 
     setGlobalPlayer(setTo) {
       this.globalPlayer = setTo;
+    },
+
+    bindMap(map) {
+      this.map = map;
+      this.ready = true;
+      const debug = new Findcoords(map);
+    },
+
+    getScreenCoordinates(ltlang) {
+      const point = this.map.project(ltlang);
+      point.x += this.offX;
+      return point;
     }
   }
 };
@@ -106,7 +156,7 @@ body {
     flex-grow: 1;
   }
 
-  #map {
+  #stage {
     flex-grow: 1;
   }
 }

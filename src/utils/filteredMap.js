@@ -27,3 +27,13 @@
 //   }
 //   ctx.putImageData(imgData, 0, 0, 0, 0, stage.width, stage.height);
 // });
+
+
+<div id="nav" v-if="contentData">
+      <span class="navBtn prev" v-if="eventI > 0" @click="onNavClick" :data-navto="eventI - 1"
+        >Anterior (#{{ eventI }})</span
+      >
+      <span class="navBtn next" v-if="eventI < 26" @click="onNavClick" :data-navto="eventI + 1"
+        >Siguiente (#{{ eventI + 2 }})</span
+      >
+    </div>

@@ -1,5 +1,5 @@
 import Video from './Video';
-import assestsData from '../utls/assetsData';
+import assestsData from '../utils/assetsData';
 
 export default class {
   constructor() {
@@ -15,7 +15,7 @@ export default class {
     this.video.bindVideo(data.id);
     this.prose.innerText = '';
 
-    data.prose.forEach((proseLine) => {
+    data.prose.forEach(proseLine => {
       const p = document.createElement('p');
       p.innerText = proseLine;
       this.prose.appendChild(p);

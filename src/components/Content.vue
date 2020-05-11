@@ -1,26 +1,19 @@
 <template>
   <section id="content">
-    <div id="videoWrapper" v-show="eventData">
-      <video id="video" ref="video" class="" controls controlsList="nodownload" disablePictureInPicture>
-        <source v-if="eventData" :src="'./videos/' + eventData.id + '/' + eventData.id + '.webm'" type="video/webm" />
-        <source v-if="eventData" :src="'./videos/' + eventData.id + '/' + eventData.id + '.mp4'" type="video/mp4" />
-        <source v-if="eventData" :src="'./videos/' + eventData.id + '/' + eventData.id + '.ogv'" type="video/ogg" />
+    <div id="videoWrapper" v-show="contentData">
+      <video id="video" ref="video" class controls controlslist="nodownload" disablepictureinpicture muted>
+        <source v-if="contentData" :src="`./videos/${contentData.id}/${contentData.id}.webm`" type="video/webm" />
+        <source v-if="contentData" :src="`./videos/${contentData.id}/${contentData.id}.mp4`" type="video/mp4" />
+        <source v-if="contentData" :src="`./videos/${contentData.id}/${contentData.id}.ogv`" type="video/ogg" />
       </video>
     </div>
 
-    <div id="nav" v-if="eventData">
-      <span class="navBtn prev" v-if="eventI > 0" @click="onNavClick" :data-navto="eventI - 1"
-        >Anterior (#{{ eventI }})</span
-      >
-      <span class="navBtn next" v-if="eventI < 26" @click="onNavClick" :data-navto="eventI + 1"
-        >Siguiente (#{{ eventI + 2 }})</span
-      >
-    </div>
-
     <div id="prose">
-      <div class="introText" v-if="!eventData"><Intro /></div>
+      <div class="introText" v-if="!contentData">
+        <Intro />
+      </div>
       <div v-else>
-        <p v-for="(line, i) in eventData.prose" :key="i">{{ line }}</p>
+        <p v-for="(line, i) in contentData.prose" :key="i">{{ line }}</p>
       </div>
     </div>
   </section>
@@ -33,25 +26,28 @@ export default {
   name: 'Content',
   components: { Intro },
   props: {
-    eventData: Object,
-    eventI: Number,
-    setEventData: Function
+    contentData: Object
   },
 
   mounted() {
-    this.$refs.video.oncanplay = e => {
-      this.$refs.video.play();
+    const v = this.$refs.video;
+    v.oncanplay = e => this.$refs.video.play();
+    v.onpause = e => {
+      this.$emit('resetZoom');
+    };
+    v.onplay = e => {
+      this.$emit('zoomToPlace');
     };
   },
 
-  updated(e) {
-    if (!this.eventData) return;
+  updated() {
+    if (!this.contentData) return;
     this.$refs.video.load();
   },
 
   methods: {
     onNavClick(e) {
-      this.setEventData(e.target.dataset.navto);
+      this.$emit('setEventData', e.target.dataset.navto);
     }
   }
 };
@@ -66,10 +62,6 @@ export default {
   z-index: 99;
   color: whitesmoke;
   overflow: auto;
-}
-
-#intro {
-  padding: 3em 1.5em;
 }
 
 #prose {

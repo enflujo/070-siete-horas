@@ -1,5 +1,5 @@
-import data from '../utls/assetsData';
-import { timeframe, tStep } from '../utls/config';
+import data from '../utils/assetsData';
+import { timeframe, tStep } from '../utils/config';
 export default class {
   constructor(map, content, line) {
     this.map = map;
@@ -10,7 +10,7 @@ export default class {
     this.times = this.wrapper.querySelector('#times');
     const playPause = this.wrapper.querySelector('#playPause');
 
-    playPause.onclick = (e) => {
+    playPause.onclick = e => {
       playPause.classList.toggle('playing');
     };
 
@@ -37,7 +37,7 @@ export default class {
         timePoint.style.bottom = `${timePoint.offsetTop + timePoint.offsetHeight + d.pushY}px`;
       }
 
-      timePoint.onmouseenter = (e) => {
+      timePoint.onmouseenter = e => {
         const position = timePoint.getBoundingClientRect();
         const a = { x: position.x + position.width / 2, y: position.y + position.height / 2 };
         this.line.animate(a, this.map.getScreenCoordinates(d.coords), d.newBounds, d.coords);

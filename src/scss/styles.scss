@@ -1,5 +1,5 @@
 // @import url(~mapbox-gl/dist/mapbox-gl.css);
-$timelineHeight: 100px;
+// $timelineHeight: 100px;
 
 // #content {
 //   position: absolute;
@@ -38,10 +38,6 @@ $timelineHeight: 100px;
 //   position: absolute;
 //   right: 0;
 // }
-
-#stage {
-  pointer-events: none;
-}
 
 #info {
   display: block;
@@ -149,9 +145,3 @@ $timelineHeight: 100px;
 // }
 
 // para borrar
-.markerTime {
-  font-size: 0.8em;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-}

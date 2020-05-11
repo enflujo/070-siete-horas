@@ -2,11 +2,12 @@
   <section id="timeline">
     <!-- <div id="playPause" ref="playPause" :class="{ playing: globalPlayer }" @click="onPlayPause">Ver en orden</div> -->
     <!-- <div id="times"></div> -->
-    <div id="points">
+    <div id="points" v-if="ready">
       <span
-        :class="{ timePoint: true, active: eventI === i }"
         v-for="(point, i) in assetsData"
         :key="i"
+        :class="{ timePoint: true, active: eventI === i, current: currentI == i }"
+        :id="`timePoint${i}`"
         :data-index="i"
         :ref="'timePoint' + i"
         @mouseenter="onPointEnter"
@@ -14,11 +15,9 @@
         @click="onPointClick"
       >
         <span class="timePointNum" :data-index="i">{{ i + 1 }}</span>
-        <span class="timePointTime" :data-index="i">{{
-          new Date(point.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        }}</span>
       </span>
     </div>
+    <div id="timelineNav" :class="{ visible: eventData }"></div>
   </section>
 </template>
 
@@ -26,50 +25,56 @@
 export default {
   name: 'Timeline',
   props: {
-    setEventData: Function,
-    setLinePoints: Function,
+    ready: Boolean,
     assetsData: Array,
     eventI: Number,
+    eventData: Object,
     globalPlayer: Boolean,
-    setGlobalPlayer: Function
+    setGlobalPlayer: Function,
+    getScreenCoordinates: Function,
+    zoom: Boolean
   },
 
-  // data() {
-  //   return {
-  //     globalPlayer: false
-  //   };
-  // },
-
-  mounted() {
-    this.assetsData.forEach((d, i) => {
-      // this.$refs[`timePoint${i}`].style.bef;
-    });
+  data() {
+    return {
+      currentI: null
+    };
   },
+
+  mounted() {},
+
+  updated() {},
 
   methods: {
     onPlayPause(e) {
       const btn = this.$refs.playPause;
-
       this.setGlobalPlayer(!btn.classList.contains('playing'));
-      if (!this.eventI) this.setEventData(0);
+      if (!this.eventI) this.$emit('setEventData', 0);
     },
 
     onPointEnter(e) {
       const point = e.target;
-      const position = point.getBoundingClientRect();
-      const a = { x: position.x + position.width / 2, y: position.y + position.height / 2 };
-      // const b = this.getScreenCoordinates(d.coords);
-      const b = { x: 300, y: 300 };
-      this.setLinePoints({ x1: a.x, y1: a.y, x2: b.x, y2: b.y });
+      const i = point.dataset.index;
+      const timeCoords = point.getBoundingClientRect();
+      const markCoords = document.getElementById(`marker${i}`).getBoundingClientRect();
+      this.$emit('setLinePoints', {
+        x1: timeCoords.x + timeCoords.width / 2,
+        y1: timeCoords.y + timeCoords.height / 2,
+        x2: markCoords.x + markCoords.width / 2,
+        y2: markCoords.y + markCoords.height / 2
+      });
+      this.$emit('setEventData', i);
     },
 
     onPointerLeave() {
-      this.setLinePoints({ x1: 0, y1: 0, x2: 0, y2: 0 });
+      this.$emit('setEventData', null);
+      this.$emit('setLinePoints', { x1: 0, y1: 0, x2: 0, y2: 0 });
     },
 
     onPointClick(e) {
-      console.log(e.target);
-      this.setEventData(e.target.dataset.index);
+      const i = e.target.dataset.index;
+      this.currentI = i;
+      this.$emit('setEventData', i, true);
     }
   }
 };
@@ -162,14 +167,16 @@ export default {
     cursor: pointer;
   }
 
-  &.active {
+  &.active,
+  &.current {
     opacity: 1;
     &::after {
       background-color: yellow;
     }
   }
 
-  &:hover {
+  &:hover,
+  &.hover {
     opacity: 0.9;
     &::after {
       background-color: yellow;
@@ -213,5 +220,18 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   letter-spacing: 0.1px;
+}
+
+#timelineNav {
+  position: absolute;
+  bottom: $timelineHeight;
+  width: 80px;
+  height: 0;
+  background-color: yellow;
+  transition: all 0.3s ease-in-out;
+
+  &.visible {
+    height: 50px;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="intro">
-    <h2>Título</h2>
+    <h2 class="title">Título</h2>
     <p>
       El pasado 21 de marzo, cientos de internos de la cárcel La Modelo de Bogotá se amotinaron y desencadenaron una
       reacción brutal de la guardia, el ejército y la policía. 24 reclusos murieron y casi un centenar resultaron
@@ -16,3 +16,9 @@ export default {
   name: 'Intro'
 };
 </script>
+
+<style lang="scss" scoped>
+.title {
+  margin-top: 0;
+}
+</style>

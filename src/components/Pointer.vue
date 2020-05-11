@@ -12,23 +12,29 @@
 </template>
 
 <script>
+import { bounds } from '../utils/config';
 export default {
   name: 'Pointer',
   props: {
-    points: Object
+    points: Object,
+    eventData: Object,
+    map: Object,
+    offX: Number
   },
 
   updated() {
-    const points = this.points;
-    if (points.x1 === 0 && points.x2 === 0) {
-      this.$refs.line.style.animation = 'none';
-      this.$refs.line.style.strokeDasharray = 0;
-      this.$refs.line.style.strokeDashoffset = 0;
+    let points = this.points;
+    const line = this.$refs.line;
+
+    if (points.x1 === 0) {
+      line.style.animation = 'none';
+      line.style.strokeDasharray = 0;
+      line.style.strokeDashoffset = 0;
     } else {
       const distance = Math.hypot(points.x2 - points.x1, points.y2 - points.y1);
-      this.$refs.line.style.animation = 'move .3s linear forwards';
-      this.$refs.line.style.strokeDasharray = `${distance} ${distance}`;
-      this.$refs.line.style.strokeDashoffset = distance;
+      line.style.animation = 'move .3s linear forwards';
+      line.style.strokeDasharray = `${distance} ${distance}`;
+      line.style.strokeDashoffset = distance;
     }
   }
 };
@@ -38,7 +44,7 @@ export default {
 #line {
   position: absolute;
   z-index: 8;
-  pointer-events: none;
+  // pointer-events: none;
   top: 0;
   left: 0;
 

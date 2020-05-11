@@ -1,11 +1,11 @@
-import './scss/styles.scss';
+// import './scss/styles.scss';
 // import Map from './components/Map';
-// import data from './utls/assetsData';
+// import data from './utils/assetsData';
 // import Line from './components/Line';
-// import { timelineWPercent, timeframe, tStep } from './utls/config';
+// import { timelineWPercent, timeframe, tStep } from './utils/config';
 // import Content from './components/Content';
 // import Timeline from './components/Timeline';
-// import Debug from './utls/Debug';
+// import Debug from './utils/Debug';
 // const content = new Content();
 // const map = new Map(content);
 // const line = new Line(map);
@@ -29,5 +29,5 @@ import './scss/styles.scss';
 import Vue from 'vue';
 import App from './App.vue';
 new Vue({
-  render: (h) => h(App),
-}).$mount('#stage');
+  render: h => h(App)
+}).$mount('#app');

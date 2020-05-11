@@ -1,16 +1,16 @@
 import { Map } from 'mapbox-gl';
-import { bounds, mapoxToken, mapboxStyle } from '../utls/config';
-import data from '../utls/assetsData';
-import { degToRad } from '../utls/helpers';
+import { bounds, mapoxToken, mapboxStyle } from '../utils/config';
+import data from '../utils/assetsData';
+import { degToRad } from '../utils/helpers';
 
 const features = [];
-data.forEach((d) => {
+data.forEach(d => {
   features.push({
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: d.coords,
-    },
+      coordinates: d.coords
+    }
   });
 });
 
@@ -34,7 +34,7 @@ export default class {
       fadeDuration: 0,
       preserveDrawingBuffer: true,
       customAttribution:
-        '<a href="https://cerosetenta.uniandes.edu.co" target="_blank">070 Universidad de los Andes</a>',
+        '<a href="https://cerosetenta.uniandes.edu.co" target="_blank">070 Universidad de los Andes</a>'
     });
 
     this.setupMask();
@@ -91,8 +91,8 @@ export default class {
       generateId: true,
       data: {
         type: 'FeatureCollection',
-        features: features,
-      },
+        features: features
+      }
     });
 
     map.addLayer({
@@ -101,11 +101,11 @@ export default class {
       source: 'points',
       paint: {
         'circle-radius': 6,
-        'circle-color': 'rgb(255,0,0)',
-      },
+        'circle-color': 'rgb(255,0,0)'
+      }
     });
 
-    map.on('mouseenter', 'markers', (e) => {
+    map.on('mouseenter', 'markers', e => {
       map.getCanvas().style.cursor = 'pointer';
       const id = e.features[0].id;
       const d = data[id];
@@ -116,12 +116,12 @@ export default class {
       this.filter();
     });
 
-    map.on('mouseleave', 'markers', (e) => {
+    map.on('mouseleave', 'markers', e => {
       this.line.reset();
       map.getCanvas().style.cursor = '';
     });
 
-    map.on('click', 'markers', (e) => {
+    map.on('click', 'markers', e => {
       const id = e.features[0].id;
       this.content.open(id);
     });
