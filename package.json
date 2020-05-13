@@ -32,7 +32,6 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "date-fns-tz": "^1.0.10",
     "mapbox-gl": "^1.10.0",
     "vue": "^2.6.11"
   }
