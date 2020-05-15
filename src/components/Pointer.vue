@@ -12,14 +12,12 @@
 </template>
 
 <script>
-import { bounds } from '../utils/config';
 export default {
   name: 'Pointer',
   props: {
     points: Object,
     eventData: Object,
-    map: Object,
-    offX: Number
+    map: Object
   },
 
   updated() {
@@ -44,7 +42,7 @@ export default {
 #line {
   position: absolute;
   z-index: 8;
-  // pointer-events: none;
+  pointer-events: none;
   top: 0;
   left: 0;
 

@@ -1,7 +1,7 @@
 <template>
-  <section id="content">
+  <section id="content" class="col1">
     <div id="videoWrapper" v-show="contentData">
-      <video id="video" ref="video" class controls controlslist="nodownload" disablepictureinpicture muted>
+      <video id="video" ref="video" class controls controlslist="nodownload" disablepictureinpicture>
         <source v-if="contentData" :src="`./videos/${contentData.id}/${contentData.id}.webm`" type="video/webm" />
         <source v-if="contentData" :src="`./videos/${contentData.id}/${contentData.id}.mp4`" type="video/mp4" />
         <source v-if="contentData" :src="`./videos/${contentData.id}/${contentData.id}.ogv`" type="video/ogg" />
@@ -9,11 +9,23 @@
     </div>
 
     <div id="prose">
-      <div class="introText" v-if="!contentData">
-        <Intro />
+      <Intro v-if="showPage === 'intro'" />
+      <Epilogue v-else-if="showPage === 'epilogue'" />
+      <div v-else-if="contentData.id == 56">
+        <p>{{ contentData.prose[0] }}</p>
+        <img :src="contentData.imgs[1]" class="imgFull" alt="Marca del proyectil" />
+        <img :src="contentData.imgs[0]" class="imgLeft" alt="Preso con proyectil en la mano" />
+        <p>{{ contentData.prose[1] }}</p>
+      </div>
+      <div v-else-if="contentData.id == 49">
+        <p>{{ contentData.prose[0] }}</p>
+        <p>{{ contentData.prose[1] }}</p>
+        <img :src="contentData.imgs[1]" class="imgFull" alt="Foto puerta" />
+        <img :src="contentData.imgs[0]" class="imgFull" alt="Puerta con impactos de bala" />
       </div>
       <div v-else>
         <p v-for="(line, i) in contentData.prose" :key="i">{{ line }}</p>
+        <img v-for="(img, i) in contentData.imgs" :key="`img${i}`" :src="img" alt="" />
       </div>
     </div>
   </section>
@@ -21,23 +33,34 @@
 
 <script>
 import Intro from './Intro.vue';
+import Epilogue from './Epilogue.vue';
 
 export default {
   name: 'Content',
-  components: { Intro },
+  components: { Intro, Epilogue },
   props: {
-    contentData: Object
+    contentData: Object,
+    showPage: String
   },
 
   mounted() {
     const v = this.$refs.video;
     v.oncanplay = e => this.$refs.video.play();
-    v.onpause = e => {
-      this.$emit('resetZoom');
-    };
+    v.onpause = e => {};
     v.onplay = e => {
       this.$emit('zoomToPlace');
     };
+    v.onended = e => {
+      this.$emit('playNext');
+    };
+  },
+
+  watch: {
+    contentData: function() {
+      if (!this.contentData) {
+        this.$refs.video.pause();
+      }
+    }
   },
 
   updated() {
@@ -54,25 +77,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../scss/utils/_variables.scss';
-#content {
-  // position: absolute;
-  width: $contentWidth;
-  height: calc(100vh - #{$timelineHeight});
-  z-index: 99;
-  color: whitesmoke;
-  overflow: auto;
-}
-
-#prose {
-  padding: 2em;
-  font-size: 0.8em;
-  letter-spacing: 1px;
-}
-
-.introText {
-  font-size: 1.2em;
-}
+@import '../scss/_variables.scss';
 
 #videoWrapper {
   line-height: 0;
@@ -82,15 +87,10 @@ video {
   cursor: pointer;
   width: 100%;
   max-height: 50vh;
-  // display: none;
 
   &:focus {
     outline: 0;
   }
-
-  // &.visible {
-  //   display: block;
-  // }
 }
 
 #nav {
@@ -116,5 +116,15 @@ video {
   &:hover {
     opacity: 0.7;
   }
+}
+
+.imgFull {
+  width: 100%;
+  height: auto;
+}
+
+.imgLeft {
+  float: left;
+  padding-right: 1em;
 }
 </style>

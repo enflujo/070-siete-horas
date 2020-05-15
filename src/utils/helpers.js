@@ -6,8 +6,7 @@ export function degToRad(deg) {
 
 export class Findcoords {
   constructor(map) {
-    this.map = map;
-    this.map.on('click', e => console.log(e.lngLat.wrap()));
+    map.on('click', e => console.log(e.lngLat.wrap()));
   }
 
   infoBox() {

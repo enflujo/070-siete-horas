@@ -1,10 +1,15 @@
 <template>
-  <section id="stage">
+  <section id="stage" ref="stage" class="col2">
     <div ref="map" id="map"></div>
     <div id="markers">
       <span
         :id="`marker${i}`"
-        class="marker"
+        :class="{
+          marker: true,
+          herido: event.category === 'herido',
+          muerto: event.category === 'muerto',
+          estimatedLoc: event.estimatedLoc
+        }"
         v-for="(event, i) in assetsData"
         :key="i"
         :ref="`marker${i}`"
@@ -15,89 +20,102 @@
       ></span>
     </div>
     <canvas id="filter" ref="filter"></canvas>
+    <Places :map="map" :tick="tick"></Places>
   </section>
 </template>
 
 <script>
 import { Map } from 'mapbox-gl';
+import Places from './Places.vue';
 import { mapboxStyle, mapoxToken, bounds } from '../utils/config';
 import assetsData from '../utils/assetsData';
 import { degToRad } from '../utils/helpers';
-
-const features = [];
-assetsData.forEach(d => {
-  features.push({
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: d.coords
-    }
-  });
-});
+import img from '../imgs/cameraView.png';
 
 export default {
   name: 'Stage',
   props: {
     eventData: Object,
+    contentData: Object,
     zoom: Boolean,
     assetsData: Array
   },
 
-  mounted() {
-    this.map = new Map({
-      container: 'map',
-      style: mapboxStyle,
-      accessToken: mapoxToken,
-      bounds: bounds,
-      interactive: false,
-      attributionControl: true,
-      fadeDuration: 0,
-      preserveDrawingBuffer: true,
-      customAttribution:
-        '<a href="https://cerosetenta.uniandes.edu.co" target="_blank">070 Universidad de los Andes</a>'
-    });
+  components: { Places },
 
+  data() {
+    return {
+      preserve: false,
+      map: null,
+      tick: Date.now()
+    };
+  },
+
+  mounted() {
     this.container = document.getElementById('stage');
     this.filterCanvas = this.$refs.filter;
     this.filterCtx = this.filterCanvas.getContext('2d');
     this.maskCanvas = document.createElement('canvas');
     this.maskCtx = this.maskCanvas.getContext('2d');
-    this.resize();
+
     this.maskImg = new Image();
     this.maskImg.onload = () => {
+      this.map = new Map({
+        container: 'map',
+        style: mapboxStyle,
+        accessToken: mapoxToken,
+        interactive: false,
+        // zoom: 17.44,
+        // center: [-74.108, 4.6355],
+        bounds: bounds,
+        attributionControl: true,
+        fadeDuration: 0,
+        preserveDrawingBuffer: true,
+        customAttribution:
+          '<a href="https://cerosetenta.uniandes.edu.co" target="_blank">070 Universidad de los Andes</a>'
+      });
       this.map.on('load', this.onMapLoaded);
-      this.map.on('render', this.onMapRender);
+      this.map.on('render', this.filter);
+      this.map.on('moveend', () => (this.preserve = false));
+      this.map.on('resize', () => this.resize);
     };
-    this.maskImg.src = '/imgs/cameraView.png';
+    this.maskImg.src = img;
   },
 
   watch: {
     eventData: function() {
       this.filter();
     },
-    zoom: function() {
-      if (this.zoom) {
-        this.map.fitBounds(this.eventData.bounds || bounds);
+    zoom: function(zoom) {
+      if (zoom) {
+        const boundCoords = this.contentData ? this.contentData.bounds : bounds;
+        this.map.fitBounds(boundCoords);
       } else {
         this.map.fitBounds(bounds);
+      }
+    },
+    contentData: function(d) {
+      if (d) {
+        this.map.fitBounds(d.bounds);
+        this.$emit('setLinePoints', { x1: 0, y1: 0, x2: 0, y2: 0 });
       }
     }
   },
 
   methods: {
     resize() {
-      this.filterCanvas.width = this.maskCanvas.width = this.container.clientWidth;
-      this.filterCanvas.height = this.maskCanvas.height = this.container.clientHeight;
+      const canvas = this.map.getCanvas();
+      this.filterCanvas.width = this.maskCanvas.width = canvas.width;
+      this.filterCanvas.height = this.maskCanvas.height = canvas.height;
+    },
+
+    adaptMarkers() {
       this.assetsData.forEach((event, i) => {
         const marker = this.$refs[`marker${i}`][0];
         const coords = this.map.project(event.coords);
         marker.style.left = `${coords.x}px`;
         marker.style.top = `${coords.y}px`;
       });
-    },
-
-    onMapRender() {
-      this.filter();
     },
 
     onMarkerEnter(e) {
@@ -116,6 +134,7 @@ export default {
     },
 
     onMarkerLeave(e) {
+      if (this.preserve) return;
       const id = e.target.dataset.index;
       document.getElementById(`timePoint${id}`).classList.remove('hover');
       this.$emit('setEventData', null);
@@ -123,70 +142,32 @@ export default {
     },
 
     onMarkerClick(e) {
+      this.preserve = true;
       this.$emit('setEventData', e.target.dataset.index, true);
     },
 
     onMapLoaded() {
       this.$emit('bindMap', this.map);
-
-      // const map = this.map;
-
-      // map.addSource('points', {
-      //   type: 'geojson',
-      //   generateId: true,
-      //   data: {
-      //     type: 'FeatureCollection',
-      //     features: features
-      //   }
-      // });
-
-      // map.addLayer({
-      //   id: 'markers',
-      //   type: 'circle',
-      //   source: 'points',
-      //   paint: {
-      //     'circle-radius': 6,
-      //     'circle-color': 'rgb(255,0,0)'
-      //   }
-      // });
-
-      // map.on('mouseenter', 'markers', e => {
-      //   // map.getCanvas().style.cursor = 'pointer';
-      //   // const id = e.features[0].id;
-      //   // const d = assetsData[id];
-      //   // const timelinePoint = document.getElementById(`timePoint${id}`);
-      //   // const position = timelinePoint.getBoundingClientRect();
-      //   // this.correspondingEle = timelinePoint;
-      //   // timelinePoint.classList.add('hover');
-      //   // this.$emit('setLinePoints', { x2: position.x + position.width / 2, y2: position.y + position.height / 2 });
-      // });
-
-      // map.on('mouseleave', 'markers', e => {
-      //   // map.getCanvas().style.cursor = '';
-      //   // this.correspondingEle.classList.remove('hover');
-      //   // this.$emit('setLinePoints', { x1: 0, y1: 0, x2: 0, y2: 0 });
-      // });
-
-      // map.on('click', 'markers', e => {
-      //   this.$emit('setEventData', e.features[0].id, true);
-      // });
-
-      // this.$emit('bindMap', map);
     },
 
     applyMask() {
-      if (!this.eventData) return;
-      const d = this.eventData;
+      const d = this.contentData || this.eventData;
+      if (!d) return;
       const maskW = 306;
       const maskH = 302;
       const point = this.map.project(d.coords);
+      const scale = window.devicePixelRatio || 1;
 
       let ctx = this.maskCtx;
-      ctx.clearRect(0, 0, this.maskCanvas.width, this.maskCanvas.height);
+      const canvas = this.maskCanvas;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.scale(scale, scale);
       ctx.save();
       ctx.translate(point.x, point.y);
       ctx.rotate(degToRad(d.r));
       ctx.drawImage(this.maskImg, 0, 0, maskW / d.sizeDivideBy, maskH / d.sizeDivideBy);
+
       ctx.restore();
       ctx.save();
       ctx.globalCompositeOperation = 'source-atop';
@@ -196,51 +177,48 @@ export default {
       ctx = this.filterCtx;
       ctx.save();
       ctx.globalCompositeOperation = 'lighter';
-      ctx.drawImage(this.maskCanvas, 0, 0);
+      ctx.drawImage(canvas, 0, 0);
       ctx.restore();
     },
 
     filter() {
+      this.resize();
+      this.adaptMarkers();
+
       const map = this.map.getCanvas();
       const ctx = this.filterCtx;
-      const w = this.container.clientWidth;
-      const h = this.container.clientHeight;
-      this.resize();
+      const w = map.width;
+      const h = map.height;
+
       ctx.drawImage(map, 0, 0);
       const imgData = ctx.getImageData(0, 0, w, h);
       let data = imgData.data;
 
       for (let i = 0; i < data.length; i += 4) {
-        const isMarkerPixel = data[i] === 255 && data[i + 1] === 0 && data[i + 2] === 0;
-        if (isMarkerPixel) continue;
-
         const gray = 0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2];
+
         data[i] = gray;
         data[i + 1] = gray;
         data[i + 2] = gray + 15;
       }
       ctx.putImageData(imgData, 0, 0, 0, 0, w, h);
       this.applyMask();
+      this.tick = Date.now();
     }
   }
 };
 </script>
 
 <style lang="scss">
-@import '../scss/utils/_variables.scss';
-
-#stage {
-  width: $stageWidth;
-  height: $stageHeight;
-  // pointer-events: none;
-}
+@import url(~mapbox-gl/dist/mapbox-gl.css);
+@import '../scss/_variables.scss';
 
 #map {
-  // pointer-events: all;
   width: 100%;
   height: 100%;
   display: block;
   z-index: 1;
+  overflow: hidden;
 
   canvas {
     &:focus {
@@ -250,43 +228,78 @@ export default {
 }
 
 #markers {
-  width: 52%;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
 
   .marker {
+    pointer-events: all;
     position: absolute;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: yellow;
+    background-color: $okColor;
     transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.6);
 
     &:hover {
       cursor: pointer;
+    }
+
+    &.herido {
+      background-color: $midColor;
+
+      &.estimatedLoc {
+        &::before {
+          border-color: $midColor;
+        }
+      }
+    }
+
+    &.muerto {
+      background-color: $dangerColor;
+
+      &.estimatedLoc {
+        &::before {
+          border-color: $dangerColor;
+        }
+      }
+    }
+
+    &.estimatedLoc {
+      width: 6px;
+      height: 6px;
+      &::before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 1.5px;
+        display: block;
+        transform: translate(-32%, -31%);
+        border-color: $okColor;
+      }
     }
   }
 }
 
 #filter {
-  width: $stageWidth;
-  height: $stageHeight;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .mapboxgl-control-container {
   display: none;
 }
-
-// #map,
-// #mask {
-//   z-index: 1;
-//   // position: absolute;
-//   right: 0;
-// }
 </style>

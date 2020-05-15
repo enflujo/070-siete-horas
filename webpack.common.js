@@ -10,7 +10,7 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -52,6 +52,14 @@ module.exports = {
           },
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'imgs'
+        }
       }
     ]
   },

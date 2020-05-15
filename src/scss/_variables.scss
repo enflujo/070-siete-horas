@@ -1,0 +1,16 @@
+$timelineHeight: 55px;
+$playPauseSize: 30px;
+$viewHeight: calc(100vh - #{$timelineHeight});
+$contentWidth: 48vw;
+$stageWidth: 52vw;
+
+$highlightColor: #d3c944;
+$okColor: #6bb4e8;
+$midColor: rgb(219, 165, 65);
+$dangerColor: rgb(207, 43, 43);
+$placeColor: rgb(147, 255, 151);
+$placeColorOpacity: rgba(147, 255, 151, 0.7);
+$placeColor2: rgb(255, 205, 147);
+$placeColor2Opacity: rgba(255, 205, 147, 0.7);
+$placeColor3: rgb(59, 103, 248);
+$placeColor3Opacity: rgba(59, 103, 248, 0.7);
