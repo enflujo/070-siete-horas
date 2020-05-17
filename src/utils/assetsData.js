@@ -45,7 +45,7 @@ export default [
     r: 220,
     sizeDivideBy: 4,
     prose: [
-      'El motín empieza a crecer. Se ven llamas en varios puntos. Aún no se escuchan tiros, pero sí disparos que podrían ser de de gases lacrimógenos o balas de goma. Apenas 20 guardias tuvieron que atender desde adentro el comienzo del amotinamiento. Luego llegarían refuerzos.'
+      'El motín empieza a crecer. Se ven llamas en varios puntos. Aún no se escuchan tiros, pero sí disparos que podrían ser de de gases lacrimógenos o balas de goma. Apenas 20 guardias tuvieron que atender desde adentro el comienzo del amotinamiento. Luego llegarían refuerzos. Una fuente del INPEC que habló bajo la condición de la reserva de su nombre porque está siendo investigado por Fiscalía y Procuraduría, dijo que alcanzó a hacer reporte de la situación a las 8:30 cuando todavía no había arrancado el motín. "A las 8:50 me empezaron a llegar novedades de La Modelo. Me dijeron que ojo, que se había activado la alarma y que se escuchan disparos mientras recibía la información".'
     ],
     estimatedLoc: false
   },
@@ -120,7 +120,7 @@ export default [
     r: 80,
     sizeDivideBy: 1,
     prose: [
-      'Residentes de sectores aledaños grabaron la situación. Se escuchan los primeros disparos de fusil. Aún no parece haber llegado el helicóptero de la Policía.'
+      'Residentes de sectores aledaños grabaron la situación. Se escuchan los primeros disparos. Aún no parece haber llegado el helicóptero de la Policía. No se sabe quién disparó primero y por qué. "Cuando suena el primer disparo nadie controla, todo el mundo intenta sobrevivir. Nadie responde llamadas, nadie contesta el radio. Ya estaban dadas las instrucciones por el comandante de instrucción.", le dijo a Cerosetenta una fuente del INPEC.'
     ],
     estimatedLoc: false
   },
@@ -166,7 +166,7 @@ export default [
     sizeDivideBy: 4,
     prose: [
       'Hombres de la policía y fuerzas antimotines rodearon el penal. Esta toma es en la esquina de la Carrera 56 con calle 17A. Algunos familiares de internos llegaron hasta este sector, cercano al acceso de visitantes pero la policía les impidió acercarse. "Están sacando un herido, uno del INPEC", se escucha en el audio.',
-      'Según el testimonio de personas que visitaron La Modelo al día siguiente, el portón del parqueadero de acceso a la zona administrativa tenía más de 100 impactos de bala, de afuera hacia adentro. "Si los que están adentro [los preso] tan solo están armados con un palo o tal vez de un cuchillo, responder con esa capacidad de fuego siembra por lo menos la necesidad de preguntarse si hubo proporcionalidad en la fuerza para contener el motín", dijo a Cerosetenta Oscar Ramírez, abogado del Comité de Solidaridad de Presos Políticos, quién acompañó a familiares que acudieron a La Modelo el día 22.'
+      'Según el testimonio de personas que visitaron La Modelo al día siguiente, el portón del parqueadero de acceso a la zona administrativa tenía más de 100 impactos de bala, de afuera hacia adentro. "Si los que están adentro [los presos] tan solo están armados con un palo o tal vez de un cuchillo, responder con esa capacidad de fuego siembra por lo menos la necesidad de preguntarse si hubo proporcionalidad en la fuerza para contener el motín", dijo a Cerosetenta Oscar Ramírez, abogado del Comité de Solidaridad de Presos Políticos, quién acompañó a familiares que acudieron a La Modelo el día 22.'
     ],
     imgs: [puerta1, puerta2],
     estimatedLoc: false
@@ -182,7 +182,7 @@ export default [
     r: -80,
     sizeDivideBy: 3,
     prose: [
-      'Durante la operación de retoma del penal, 11 guardias del INPEC resultaron heridos, dos de ellos de gravedad. Uno, que se lanzó al vacío desde la garita  9, que fue tomada por los internos. El otro —que se ve en este video— es un auxiliar bachiller que fue alcanzado por un grupo de internos y fue golpeado y herido con arma blanca. Ninguno tiene heridas de bala.'
+      'Durante la operación de retoma del penal, 11 guardias del INPEC resultaron heridos, dos de ellos de gravedad. Uno, que se lanzó al vacío desde la garita  9, que fue tomada por los internos. El otro —que se ve en este video— es un auxiliar bachiller que fue alcanzado por un grupo de internos y fue golpeado y herido con arma blanca. Ninguno tiene heridas de bala. Según una fuente del INPEC, los dos (de 11) guardias que resultaron gravemente heridos iban a ser quemados vivos. Esto no ocurrió.'
     ],
     category: 'herido',
     estimatedLoc: false
@@ -242,7 +242,8 @@ export default [
     r: 160,
     sizeDivideBy: 5,
     prose: [
-      'La Ministra de Justicia, Margarita Cabello, y el director del INPEC, General Norberto Mujica, aseguraron al día siguiente del motín que ningún preso había huido. La ministra seguró que se había tratado de "un intento masivo y criminal de fuga" y reiteró: "No hubo fugas". Quiénes se ven el video estarían aún en la guayana, detrás de los patios 4 y 5, en el sector sur de la cárcel.'
+      'La Ministra de Justicia, Margarita Cabello, y el director del INPEC, General Norberto Mujica, aseguraron al día siguiente del motín que ningún preso había huido. La ministra seguró que se había tratado de "un intento masivo y criminal de fuga" y reiteró: "No hubo fugas". Quiénes se ven el video estarían aún en la guayana, detrás de los patios 4 y 5, en el sector sur de la cárcel.',
+      'En la foto se ve parte de cómo quedó ese sector. La escalera que se ve, puede ser la misma que se alcanza a ver en el video.'
     ],
     estimatedLoc: false
   },
@@ -257,7 +258,7 @@ export default [
     r: 130,
     sizeDivideBy: 4,
     prose: [
-      'El video fue grabado en la guayana sur, detrá de los patios 4 y 5. En ese lugar murieron varios internos. '
+      'El video fue grabado en la guayana sur, detrá de los patios 4 y 5. En ese lugar murieron varios internos. La madre de la persona que se ve tendida en el piso recibió este video la noche del 21 de marzo pero al otro día no encontró su nombre en los listados de los heridos remitidos a centros médicos o tratados en sanidad del centro penitenciario emitida en el boletín 024 del INPEC. Tampoco estaba en la lista de los 23 fallecidos. Solo hasta el 24 de marzo, la Procuraduría, en respuesta a una solicitud del Comité de Solidaridad con los Presos Políticos, afirma que el joven está vivo y se encuentra en el patio 1B, tras haber recibido atención en la misma cárcel. El Ministerio de Justicia indica que hicieron la reseña de salud el día 24 de marzo. Su madre, sin embargo, ha pedido que su hijo pueda llamarla y enviarle una foto para corroborar que está bien, pues ha habido múltiples inconsistencias entre la información suministrada por las autoridades y la real. Cerosetenta pudo comprobar que esta situación se repitió para más familiares de los internos heridos.'
     ],
     category: 'muerto',
     estimatedLoc: false

@@ -1,5 +1,6 @@
 <template>
   <section id="stage" ref="stage" class="col2">
+    <Legend />
     <div ref="map" id="map"></div>
     <div id="markers">
       <span
@@ -8,7 +9,7 @@
           marker: true,
           herido: event.category === 'herido',
           muerto: event.category === 'muerto',
-          estimatedLoc: event.estimatedLoc
+          estimatedLoc: event.estimatedLoc,
         }"
         v-for="(event, i) in assetsData"
         :key="i"
@@ -27,6 +28,7 @@
 <script>
 import { Map } from 'mapbox-gl';
 import Places from './Places.vue';
+import Legend from './Legend.vue';
 import { mapboxStyle, mapoxToken, bounds } from '../utils/config';
 import assetsData from '../utils/assetsData';
 import { degToRad } from '../utils/helpers';
@@ -41,7 +43,7 @@ export default {
     assetsData: Array
   },
 
-  components: { Places },
+  components: { Places, Legend },
 
   data() {
     return {
