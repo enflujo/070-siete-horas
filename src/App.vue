@@ -1,6 +1,5 @@
 <template>
   <main id="main">
-    <Legend />
     <Menu
       :contentI="contentI"
       :total="assetsData.length"
@@ -45,13 +44,12 @@ import Stage from './components/Stage.vue';
 import Timeline from './components/Timeline.vue';
 import Pointer from './components/Pointer.vue';
 import Menu from './components/Menu.vue';
-import Legend from './components/Legend.vue';
 import assetsData from './utils/assetsData';
 // import { Findcoords } from './utils/helpers';
 
 export default {
   name: 'Main',
-  components: { Content, Stage, Timeline, Pointer, Menu, Legend },
+  components: { Content, Stage, Timeline, Pointer, Menu },
   data() {
     return {
       ready: false,
@@ -231,6 +229,17 @@ p {
   letter-spacing: 1px;
 }
 
+#legend {
+  position: absolute;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  font-size: 0.75em;
+  letter-spacing: 0;
+  padding: 1em 1em 1em 2em;
+  color: white;
+}
+
 @media (orientation: portrait) {
   #main {
     flex-direction: column;
@@ -260,6 +269,10 @@ p {
 
   #timeline {
     display: none;
+  }
+
+  #legend {
+    font-size: 0.5em;
   }
 
   #prose {

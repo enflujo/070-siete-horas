@@ -1,7 +1,9 @@
 <template>
   <section id="legend">
     <div class="ele muertos">Muertos</div>
-    <div class="ele aprox"><span></span>Ubicación aprox.</div>
+    <div class="ele aprox">
+      <span></span>Ubicación aprox.
+    </div>
     <div class="ele edificio">Edificios</div>
     <div class="ele garita">Garitas</div>
     <div class="ele estructura">Estructuras</div>
@@ -17,16 +19,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
-#legend {
-  position: absolute;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 999;
-  font-size: 0.75em;
-  letter-spacing: 0;
-  padding: 1em 1em 1em 2em;
-  color: white;
-}
 
 .ele {
   position: relative;
