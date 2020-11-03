@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss">
 #line {
-  position: absolute;
+  position: fixed;
   z-index: 8;
   pointer-events: none;
   top: 0;

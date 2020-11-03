@@ -9,7 +9,7 @@
           marker: true,
           herido: event.category === 'herido',
           muerto: event.category === 'muerto',
-          estimatedLoc: event.estimatedLoc,
+          estimatedLoc: event.estimatedLoc
         }"
         v-for="(event, i) in assetsData"
         :key="i"
