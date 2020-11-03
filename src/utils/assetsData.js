@@ -2,6 +2,9 @@ import puerta1 from '../imgs/puerta-1.jpeg';
 import puerta2 from '../imgs/puerta-2.png';
 import granada1 from '../imgs/granada-1.png';
 import granada2 from '../imgs/granada-2.png';
+import escalera from '../imgs/escalera.jpeg';
+import garita9 from '../imgs/garita9.jpeg';
+import porton from '../imgs/portón.jpeg';
 
 export default [
   {
@@ -245,6 +248,7 @@ export default [
       'La Ministra de Justicia, Margarita Cabello, y el director del INPEC, General Norberto Mujica, aseguraron al día siguiente del motín que ningún preso había huido. La ministra seguró que se había tratado de "un intento masivo y criminal de fuga" y reiteró: "No hubo fugas". Quiénes se ven el video estarían aún en la guayana, detrás de los patios 4 y 5, en el sector sur de la cárcel.',
       'En la foto se ve parte de cómo quedó ese sector. La escalera que se ve, puede ser la misma que se alcanza a ver en el video.'
     ],
+    imgs: [escalera],
     estimatedLoc: false
   },
   {
@@ -260,7 +264,7 @@ export default [
     prose: [
       'El video fue grabado en la guayana sur, detrá de los patios 4 y 5. En ese lugar murieron varios internos. La madre de la persona que se ve tendida en el piso recibió este video la noche del 21 de marzo pero al otro día no encontró su nombre en los listados de los heridos remitidos a centros médicos o tratados en sanidad del centro penitenciario emitida en el boletín 024 del INPEC. Tampoco estaba en la lista de los 23 fallecidos. Solo hasta el 24 de marzo, la Procuraduría, en respuesta a una solicitud del Comité de Solidaridad con los Presos Políticos, afirma que el joven está vivo y se encuentra en el patio 1B, tras haber recibido atención en la misma cárcel. El Ministerio de Justicia indica que hicieron la reseña de salud el día 24 de marzo. Su madre, sin embargo, ha pedido que su hijo pueda llamarla y enviarle una foto para corroborar que está bien, pues ha habido múltiples inconsistencias entre la información suministrada por las autoridades y la real. Cerosetenta pudo comprobar que esta situación se repitió para más familiares de los internos heridos.'
     ],
-    category: 'muerto',
+    category: 'herido',
     estimatedLoc: false
   },
   {
@@ -298,16 +302,18 @@ export default [
   {
     id: 46,
     section: 2,
-    coords: [-74.10711785233207, 4.635201248665169],
+    coords: [-74.10745465104213, 4.635528738771754],
     bounds: [
-      [-74.1074096453043, 4.63540076043634],
-      [-74.10645710840248, 4.634811464222068]
+      [-74.108137908669, 4.6360361004715],
+      [-74.10628286421229, 4.634994135780332]
     ],
     r: 0,
     sizeDivideBy: 9,
-    prose: ['Pasillo interno de alguno de los pabellones. No pudimos identificar el lugar exacto.'],
+    prose: [
+      'Pasillo interno del pabellón 2B. [Actualización] El interno que aparece herido es Diego Fernando Álvarez, un ex militar. La familia utilizó este video como prueba para presentar una acción urgente de búsqueda ante la Fiscalía con la que lograron establecer que estaba vivo, tras una semana sin tener noticias de su paradero o de su estado de salud. El INPEC nunca informó a la familia a qué hospital fue remitido. Según el parte médico Álvarez sufrió "una herida en el brazo derecho, fractura al nivel del codo y una herida más en el ojo derecho que le alcanzaba a afectar el oído", según informó días después El Espectador.'
+    ],
     category: 'herido',
-    estimatedLoc: true
+    estimatedLoc: false
   },
   {
     id: 32,
@@ -381,8 +387,10 @@ export default [
     r: 111,
     sizeDivideBy: 4,
     prose: [
-      'Internos de los patios 4 y 5 lograron salir del edifcio y llegar al area de la guayana sur. Allí se tomaron la garita 9 (ver mapa), desarmaron al guardia y luego la incendiaron. Los internos intentan avanzar en grupo hacia la garita 10, pero son repelidos por las ráfagas de fusil que se escuchan en el video. En la garita 10 se encontraba un guardia con fusil que recibió apoyo de otros dos, también dotados de armas largas. Según un testimonio, en la esquina de la garita 10, los internos lograron abrir un hueco en el muro para llegar hasta la zona administrativa, desde donde hubiera sido fácil huir. En esa guayana quedaron, al menos, cuatro cadáveres en el piso.'
+      'Internos de los patios 4 y 5 lograron salir del edifcio y llegar al area de la guayana sur. Allí se tomaron la garita 9 (ver mapa), desarmaron al guardia y luego la incendiaron. Los internos intentan avanzar en grupo hacia la garita 10, pero son repelidos por las ráfagas de fusil que se escuchan en el video. En la garita 10 se encontraba un guardia con fusil que recibió apoyo de otros dos, también dotados de armas largas. Según un testimonio, en la esquina de la garita 10, los internos lograron abrir un hueco en el muro para llegar hasta la zona administrativa, desde donde hubiera sido fácil huir. En esa guayana quedaron, al menos, cuatro cadáveres en el piso.',
+      'En la foto se ve cómo los internos derribaron una reja que protege el acceso a la garita 9 y luego forzaron la puerta de acceso. También se ven disparos en los vidrios blindados de la garita. No fue posible determinar si venían de afuera hacia adentro o al revés.'
     ],
+    imgs: [garita9],
     estimatedLoc: false
   },
   {
@@ -396,8 +404,10 @@ export default [
     r: -50,
     sizeDivideBy: 4,
     prose: [
-      'Toma desde el tejado del sector de talleres, que muestra el portón de salida hacia el rancho externo. La gente que se ve correr son internos que huyen a la reacción de la guardia que intentaba repeler a los que ya habían logrado llegar hasta el rancho de alimentos y estaban a una puerta de salir a la calle. Se escuchan disparos de arma de fuego.'
+      'Toma desde el tejado del sector de talleres, que muestra el portón interno de salida hacia el rancho de alimentos. La gente que se ve correr son internos que huyen a la reacción de la fuerza pública que intentaba repeler a los que ya habían logrado llegar hasta el rancho de alimentos y estaban a una puerta de salir a la calle. Se escuchan disparos de arma de fuego.',
+      'En la foto se ve el mismo portón, el ángulo por el que fue forzado y las marcas de los impactos de bala, si se amplía la imagen.'
     ],
+    imgs: [porton],
     estimatedLoc: false
   },
   {

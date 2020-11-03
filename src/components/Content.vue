@@ -11,18 +11,30 @@
     <div id="prose">
       <Intro v-if="showPage === 'intro'" />
       <Epilogue v-else-if="showPage === 'epilogue'" />
-      <div v-else-if="contentData.id == 56">
+      <div v-else-if="contentData.id == 4">
         <p>{{ contentData.prose[0] }}</p>
-        <img :src="contentData.imgs[1]" class="imgFull" alt="Marca del proyectil" />
-        <img :src="contentData.imgs[0]" class="imgLeft" alt="Preso con proyectil en la mano" />
         <p>{{ contentData.prose[1] }}</p>
+        <img :src="contentData.imgs[0]" class="imgFull" alt="Escalera" />
       </div>
       <div v-else-if="contentData.id == 49">
         <p>{{ contentData.prose[0] }}</p>
         <p>{{ contentData.prose[1] }}</p>
         <img :src="contentData.imgs[1]" class="imgFull" alt="Foto puerta" />
         <img :src="contentData.imgs[0]" class="imgFull" alt="Puerta con impactos de bala" />
+        <p class="caption">Foto del portón del parqueadero de la zona administrativa, tomada desde afuera.</p>
       </div>
+      <div v-else-if="contentData.id == 53">
+        <p>{{ contentData.prose[0] }}</p>
+        <p>{{ contentData.prose[1] }}</p>
+        <img :src="contentData.imgs[0]" class="imgFull" alt="Garita 9" />
+      </div>
+      <div v-else-if="contentData.id == 56">
+        <p>{{ contentData.prose[0] }}</p>
+        <img :src="contentData.imgs[1]" class="imgFull" alt="Marca del proyectil" />
+        <img :src="contentData.imgs[0]" class="imgLeft" alt="Preso con proyectil en la mano" />
+        <p>{{ contentData.prose[1] }}</p>
+      </div>
+
       <div v-else>
         <p v-for="(line, i) in contentData.prose" :key="i">{{ line }}</p>
         <img v-for="(img, i) in contentData.imgs" :key="`img${i}`" :src="img" alt="" />
@@ -126,5 +138,10 @@ video {
 .imgLeft {
   float: left;
   padding-right: 1em;
+}
+
+.caption {
+  font-size: 0.85em;
+  font-style: italic;
 }
 </style>

@@ -97,7 +97,7 @@ export const patios = [
       se: [-74.10695020602094, 4.635114628647557],
       sw: [-74.10702155465515, 4.635036105507908]
     },
-    name: 'Pabellón 2B'
+    name: 'Pabellón 2A'
   },
   {
     type: 'patio',
@@ -157,7 +157,7 @@ export const patios = [
       se: [-74.10639693287067, 4.635481656404707],
       sw: [-74.10643135996077, 4.635440117821176]
     },
-    name: 'Primera puerta'
+    name: 'Portón ala norte'
   },
   {
     type: 'estructura',
@@ -167,7 +167,7 @@ export const patios = [
       se: [-74.10599649145348, 4.635398579237517],
       sw: [-74.10605447392089, 4.635329950266311]
     },
-    name: 'Portón'
+    name: 'Portón a la calle'
   },
   {
     type: 'estructura',

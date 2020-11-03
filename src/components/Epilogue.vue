@@ -2,12 +2,13 @@
   <div id="epilogue">
     <h3>Epílogo</h3>
     <p class="mainText">
-      Hacia las 3 a.m. el CTI de la Fiscalía ingresó a La Modelo. Uno de los reclusos relató a Cerosetenta lo que pudo
-      ver del levantamiento de algunos cadáveres que quedaron fuera de los patios. "El CTI llegó y tomó fotos de los
-      cadáveres pero no hicieron un levantamiento como toca; arrumaban y sacaban cadaveres, lo más rápido posible",
-      dijo. Otro, señaló que debido al fuego algunos de los cadáveres fueron recogidos por el Cuerpo de Bomberos. Al
-      menos uno de los cadáveres, que quedó sobre un techo, solo fue alzado hasta el día siguiente y delante de muchos
-      de los familiares que ya estaban afuera del penal esperando noticias.
+      A las 12:30 de la noche entró la Fiscalía al penal y se llevó los videos de seguridad, según un directivo del
+      INPEC. Uno de los reclusos relató a Cerosetenta lo que pudo ver del levantamiento de algunos cadáveres que
+      quedaron fuera de los patios, según él, hacia las 3AM. "El CTI llegó y tomó fotos de los cadáveres pero no
+      hicieron un levantamiento como toca; arrumaban y sacaban cadaveres, lo más rápido posible", dijo. Otro, señaló que
+      debido al fuego algunos de los cadáveres fueron recogidos por el Cuerpo de Bomberos. Al menos uno de los
+      cadáveres, que quedó sobre un techo, solo fue alzado hasta el día siguiente y delante de muchos de los familiares
+      que ya estaban afuera del penal esperando noticias.
     </p>
     <p>
       32 heridos fueron remitidos a hospitales. La mayoría ya regresó a la cárcel. Algunos siguen esperando atención
