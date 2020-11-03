@@ -68,7 +68,10 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].css'
+    }),
     new VueLoaderPlugin()
     // new BundleAnalyzerPlugin()
   ]
