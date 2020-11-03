@@ -1,4 +1,6 @@
 /dist
+!/dist
+/dist/videos/*
 node_modules
 /videos
 .DS_Store
