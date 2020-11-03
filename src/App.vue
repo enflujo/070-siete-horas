@@ -164,6 +164,8 @@ body {
   font-weight: 300;
   letter-spacing: 2px;
   display: flex;
+  position: relative;
+  padding-top: 48px;
 }
 
 .title {
@@ -211,7 +213,7 @@ p {
 }
 
 #timeline {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100vw;
   height: $timelineHeight;
@@ -285,7 +287,7 @@ p {
 @media (orientation: landscape) {
   .col1 {
     width: $contentWidth;
-    height: calc(100vh - #{$timelineHeight});
+    height: $viewHeight;
   }
 
   .col2 {

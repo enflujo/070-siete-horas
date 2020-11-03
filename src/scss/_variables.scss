@@ -1,6 +1,7 @@
 $timelineHeight: 55px;
+$headerSize: 48px;
 $playPauseSize: 30px;
-$viewHeight: calc(100vh - #{$timelineHeight});
+$viewHeight: calc(100vh - #{$timelineHeight} - #{$headerSize});
 $contentWidth: 48vw;
 $stageWidth: 52vw;
 

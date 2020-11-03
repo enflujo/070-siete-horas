@@ -44,7 +44,7 @@ export default {
 @import '../scss/_variables.scss';
 
 .menu {
-  margin: 0;
+  margin: 48px 0 0;
   padding: 0;
 }
 
