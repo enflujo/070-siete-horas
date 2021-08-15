@@ -1,17 +1,27 @@
-const merge = require('webpack-merge');
 const path = require('path');
-const common = require('./webpack.common.js');
+const base = require('./webpack.common.js');
+const { merge } = require('webpack-merge');
+const { baseCss } = require('./webpack.ayudas');
 
-module.exports = merge(common, {
+module.exports = merge(base, {
   mode: 'development',
   devtool: 'inline-source-map',
-  optimization: {
-    usedExports: true,
-  },
+  target: 'web',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true
   },
-  watchOptions: {
-    ignored: ['/node_modules/'],
-  },
+  module: {
+    rules: [
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          ...baseCss
+        ]
+      }
+    ]
+  }
 });

@@ -36,30 +36,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(scss|css)$/,
-        use: [
-          'vue-style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              autoprefixer: {
-                browsers: ['last 2 versions']
-              },
-              plugins: () => [autoprefixer]
-            }
-          },
-          'sass-loader'
-        ]
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: 'asset/resource'
       },
       {
-        test: /\.(png|svg|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'imgs'
-        }
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource'
       }
     ]
   },
