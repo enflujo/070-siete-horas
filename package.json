@@ -34,7 +34,7 @@
     "mapbox-gl": "^2.7.0",
     "postcss": "^8.4.31",
     "postcss-preset-env": "^7.4.1",
-    "vue": "^2.6.14"
+    "vue": "^3.0.0"
   },
   "browserslist": {
     "production": [
